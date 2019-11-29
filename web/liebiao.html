@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>小米手机列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        $(function () {
+            $.post("product",function (data) {
+                if (data != null && data.length>0){
+                    var div = $("#pcontent");
+                    var str = "<div class=\"biaoti center\">小米手机</div>";
+                    var temp = 0;
+                    for (var i = 0; i <data.length; i++) {
+                        temp++;
+
+                        if (temp % 5 == 1) {
+                            str += '<div class="main center">\n' +
+                                '\n' +
+                                '        <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"\n' +
+                                '              onmouseout="this.style.border=\'2px solid #fff\'" onmousemove="this.style.border=\'2px solid red\'">\n' +
+                                '             <div class="sub_mingxing"><a href="xiangqing.html?pid='+data[temp-1].pid+'" target="_self"><img\n' +
+                                '                     src="'+data[temp-1].image+'" alt=""></a></div>\n' +
+                                '             <div class="pinpai"><a href="" target="_self">'+data[temp-1].pname+'</a>\n' +
+                                '             </div>\n' +
+                                '             <div class="youhui">'+data[temp-1].sale+'</div>\n' +
+                                '             <div class="jiage">'+data[temp-1].price+'元</div>\n' +
+                                '         </div>';
+                        }else if (temp % 5 == 0 || temp==data.length) {
+                            str += '<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"\n' +
+                                '             onmouseout="this.style.border=\'2px solid #fff\'" onmousemove="this.style.border=\'2px solid red\'">\n' +
+                                '            <div class="sub_mingxing"><a href="xiangqing.html?pid='+data[temp-1].pid+'" target="_self"><img\n' +
+                                '                    src="'+data[temp-1].image+'" alt=""></a></div>\n' +
+                                '            <div class="pinpai"><a href="" target="_self">'+data[temp-1].pname+'</a>\n' +
+                                '            </div>\n' +
+                                '            <div class="youhui">'+data[temp-1].sale+'</div>\n' +
+                                '            <div class="jiage">'+data[temp-1].price+'元</div>\n' +
+                                '        </div><div class="clear"></div></div>';
+                        }else {
+                            str += '<div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"\n' +
+                                '             onmouseout="this.style.border=\'2px solid #fff\'" onmousemove="this.style.border=\'2px solid red\'">\n' +
+                                '            <div class="sub_mingxing"><a href="xiangqing.html?pid='+data[temp-1].pid+'" target="_self"><img\n' +
+                                '                    src="'+data[temp-1].image+'" alt=""></a></div>\n' +
+                                '            <div class="pinpai"><a href="" target="_self">'+data[temp-1].pname+'</a>\n' +
+                                '            </div>\n' +
+                                '            <div class="youhui">'+data[temp-1].sale+'</div>\n' +
+                                '            <div class="jiage">'+data[temp-1].price+'元</div>\n' +
+                                '        </div>';
+                        }
+                    }
+
+                    div.html(str);
+                }
+            });
+        });
+        
+    </script>
+</head>
+
+<body>
+<!-- start header -->
+<div id="header"></div>
+
+<div class="danpin center" id="pcontent" >
+    <!--<div class="biaoti center">小米手机</div>-->
+
+    <!--  <div class="main center">
+
+        <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+              onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+             <div class="sub_mingxing"><a href="" target="_self"><img
+                     src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+             <div class="pinpai"><a href="" target="_self">11111</a>
+             </div>
+             <div class="youhui">11111</div>
+             <div class="jiage">999元</div>
+         </div>
+        <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+             onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+            <div class="sub_mingxing"><a href="" target="_self"><img
+                    src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+            <div class="pinpai"><a href="" target="_self">11111</a>
+            </div>
+            <div class="youhui">11111</div>
+            <div class="jiage">999元</div>
+        </div>
+        <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+             onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+            <div class="sub_mingxing"><a href="" target="_self"><img
+                    src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+            <div class="pinpai"><a href="" target="_self">11111</a>
+            </div>
+            <div class="youhui">11111</div>
+            <div class="jiage">999元</div>
+        </div>
+        <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+             onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+            <div class="sub_mingxing"><a href="" target="_self"><img
+                    src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+            <div class="pinpai"><a href="" target="_self">11111</a>
+            </div>
+            <div class="youhui">11111</div>
+            <div class="jiage">999元</div>
+        </div>
+        <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+             onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+            <div class="sub_mingxing"><a href="" target="_self"><img
+                    src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+            <div class="pinpai"><a href="" target="_self">11111</a>
+            </div>
+            <div class="youhui">11111</div>
+            <div class="jiage">999元</div>
+        </div>
+        <div class="clear"></div>
+
+    </div>-->
+    <!--<div class="main center">
+
+         <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+              onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+             <div class="sub_mingxing"><a href="" target="_self"><img
+                     src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+             <div class="pinpai"><a href="" target="_self">11111</a>
+             </div>
+             <div class="youhui">11111</div>
+             <div class="jiage">999元</div>
+         </div>
+         <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+              onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+             <div class="sub_mingxing"><a href="" target="_self"><img
+                     src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+             <div class="pinpai"><a href="" target="_self">11111</a>
+             </div>
+             <div class="youhui">11111</div>
+             <div class="jiage">999元</div>
+         </div>
+         <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+              onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+             <div class="sub_mingxing"><a href="" target="_self"><img
+                     src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+             <div class="pinpai"><a href="" target="_self">11111</a>
+             </div>
+             <div class="youhui">11111</div>
+             <div class="jiage">999元</div>
+         </div>
+         <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+              onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+             <div class="sub_mingxing"><a href="" target="_self"><img
+                     src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+             <div class="pinpai"><a href="" target="_self">11111</a>
+             </div>
+             <div class="youhui">11111</div>
+             <div class="jiage">999元</div>
+         </div>
+         <div class="mingxing fl mb20" style="border:2px solid #fff;width:230px;cursor:pointer;"
+              onmouseout="this.style.border='2px solid #fff'" onmousemove="this.style.border='2px solid red'">
+             <div class="sub_mingxing"><a href="" target="_self"><img
+                     src="image/liebiao_hongmin4_dd.jpg" alt=""></a></div>
+             <div class="pinpai"><a href="" target="_self">11111</a>
+             </div>
+             <div class="youhui">11111</div>
+             <div class="jiage">999元</div>
+         </div>
+         <div class="clear"></div>
+     </div>
+ </div>-->
+
+</div>
+<div class="clear"></div>
+<ul style="margin-left: 60px;" class="pagination ">
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>
+<div id="footer"></div>
+
+<!-- end danpin -->
+
+</body>
+</html>

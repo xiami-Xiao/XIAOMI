@@ -1,0 +1,110 @@
+<header>
+    <!--<div class="top center">
+        <div class="left fl">
+            <ul>
+                <li><a href="/xiaomi/" target="_blank">小米商城</a></li>
+                <li>|</li>
+                <li><a href="">MIUI</a></li>
+                <li>|</li>
+                <li><a href="">米聊</a></li>
+                <li>|</li>
+                <li><a href="">游戏</a></li>
+                <li>|</li>
+                <li><a href="">多看阅读</a></li>
+                <li>|</li>
+                <li><a href="">云服务</a></li>
+                <li>|</li>
+                <li><a href="">金融</a></li>
+                <li>|</li>
+                <li><a href="">小米商城移动版</a></li>
+                <li>|</li>
+                <li><a href="">问题反馈</a></li>
+                <li>|</li>
+                <li><a href="">Select Region</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="right fr">
+            <div id="divorder" class="gouwuche fr" hidden><a href="./dingdanzhongxin.html">我的订单</a></div>
+            <div class="fr">
+                <ul>
+                    <li id="zhuxiaoid" hidden><a href="logout" target="_blank">注销</a></li>
+                    <li id="loginid"><a href="./login.html" target="_blank">登录</a></li>
+                    <li>|</li>
+                    <li  id="regeditid" ><a href="./register.html" target="_blank" >注册</a></li>
+                    <li id="lid"></li>
+                    <li>|</li>
+                    <li id="centerid" hidden><a href="self_info.html" >个人中心</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+    </div>-->
+    <div id="yi">
+        <div class="top center">
+            <div class="left fl">
+                <ul>
+                    <li><a href="/xiaomi/" target="_blank">小米商城</a></li>
+                    <li>|</li>
+                    <li><a href="">MIUI</a></li>
+                    <li>|</li>
+                    <li><a href="">米聊</a></li>
+                    <li>|</li>
+                    <li><a href="">游戏</a></li>
+                    <li>|</li>
+                    <li><a href="">多看阅读</a></li>
+                    <li>|</li>
+                    <li><a href="">云服务</a></li>
+                    <li>|</li>
+                    <li><a href="">金融</a></li>
+                    <li>|</li>
+                    <li><a href="">小米商城移动版</a></li>
+                    <li>|</li>
+                    <li><a href="">问题反馈</a></li>
+                    <li>|</li>
+                    <li><a href="">Select Region</a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="right fr">
+                <div id="divorder" class="gouwuche fr gou"><a href="./dingdanzhongxin.html">我的订单</a></div>
+                <div class="fr">
+                    <ul>
+                        <li id="zhuxiaoid"><a href="logout" target="_blank">注销</a></li>
+                        <li id="loginid"><a href="./login.html" target="_blank">登录</a></li>
+                        <li>|</li>
+                        <li id="regeditid"><a href="./register.html" target="_blank">注册</a></li>
+
+                        <li id="lid"></li>
+
+                        <li id="centerid"><a href="self_info.html">个人中心</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+</header>
+<script>
+    $(function () {
+        $.get("showName", function (data) {
+            if (data != "null") {
+
+                $("#loginid").hide();
+                $("#regeditid").hide();
+                $("#lid").html("&nbsp;&nbsp;&nbsp;欢迎回来：" + data+"&nbsp;&nbsp;&nbsp;|" );
+                $("#centerid").show();
+                $("#divorder").show();
+                $("#zhuxiaoid").show();
+            } else {
+
+                $("#centerid").hide();
+                $("#divorder").hide();
+                $("#zhuxiaoid").hide();
+            }
+        });
+    });
+</script>

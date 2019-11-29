@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <title>立即购买-小米商城</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/include.js"></script>
+    <script src="js/getParameter.js"></script>
+    <script>
+        $(function () {
+
+            var pid = getParameter('pid');
+            var str ='';
+            // alert(getParameter("pid"));
+            $.post("pInfo", {"pid": pid}, function (data) {
+				if (data != null){
+					$("#title").html(data.pname);
+					$("#ptitle").html(data.pname);
+					$("#pimg").prop("src",data.image);
+					$("#pdesc").html(data.desc);
+					$("#price").html(data.price+"元");
+					var code = data.code;
+					var s = code.split("+");
+					$("#pname").html(s[1]);
+					$("#price1").html(data.price+"元");
+
+					//$("#ptitle").html(data.pname);
+				}
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+<!-- start header -->
+<div id="header"></div>
+<!--end header -->
+<!--	<div id="banner"></div>-->
+<!-- start banner_x -->
+
+<!-- end banner_x -->
+
+<!-- xiangqing -->
+<form action="" method="post" id="fid">
+    <div class="xiangqing">
+        <div class="neirong w">
+            <div id="title" class="xiaomi6 fl">小米6</div>
+            <nav class="fr">
+                <li><a href="">概述</a></li>
+                <li>|</li>
+                <li><a href="">变焦双摄</a></li>
+                <li>|</li>
+                <li><a href="">设计</a></li>
+                <li>|</li>
+                <li><a href="">参数</a></li>
+                <li>|</li>
+                <li><a href="">F码通道</a></li>
+                <li>|</li>
+                <li><a href="">用户评价</a></li>
+                <div class="clear"></div>
+            </nav>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="jieshao mt20 w">
+        <div class="left fl"><img id="pimg" src="image/liebiao_xiaomint2.jpg"></div>
+        <div class="right fr">
+            <div class="h3 ml20 mt20" id="ptitle">小米6</div>
+            <div class="jianjie mr40 ml20 mt10" id="pdesc">变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128</div>
+            <div class="jiage ml20 mt10" id="price">3000元</div>
+            <div class="ft20 ml20 mt20">选择版本</div>
+            <div class="xzbb ml20 mt10">
+                <div class="banben fl" id="did1">
+                    <a>
+                        <span id="pname">64G</span>
+                        <span id="price1">2000元</span>
+                    </a>
+                </div>
+
+                <div class="banben fr" id="did2">
+                    <a>
+                        <span id="pname2">128G</span>
+                        <span id="price2">3000元</span>
+                    </a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="ft20 ml20 mt20">选择颜色</div>
+            <div class="xzbb ml20 mt10">
+
+                <div class="banben fl" onclick="getColor1()">
+                    <a>
+                        <span class="yuandian"></span>
+                        <span class="yanse" name="pcolor">黑色</span>
+                    </a>
+                </div>
+
+                <div class="banben fr" onclick="getColor2()">
+                    <a>
+                        <span class="yuandian"></span>
+                        <span class="yanse" name="pcolor">白色</span>
+                    </a>
+                </div>
+            </div>
+            <div class="xqxq mt20 ml20">
+                <div class="top1 mt10">
+                    <div class="left1 fl" id="showName"></div>
+                    <div class="right1 fr" id="showprice"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="bot mt20 ft20 ftbc" id="tprice">总计：</div>
+            </div>
+            <div class="xiadan ml20 mt20">
+                <input class="jrgwc" type="button" name="jrgwc" value="立即选购"/>
+                <input onclick="subForm()" class="jrgwc" type="button" name="jrgwc" value="加入购物车"/>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <input type="hidden" name="info"/>
+</form>
+<!-- footer -->
+<div id="footer"></div>
+</body>
+
+<script type="text/javascript">
+    var str = "";
+    var scolor = "";
+    var price = "";
+    var show = document.getElementById("showName");
+    document.getElementById("did1").onclick = function () {
+        str = document.getElementById("pname").innerHTML;
+        price = document.getElementById("price1").innerHTML;
+        show.innerHTML = "选择： " + str + " " + scolor;
+        document.getElementById("showprice").innerHTML = price;
+        document.getElementById("tprice").innerHTML = "总计：" + price;
+    }
+    document.getElementById("did2").onclick = function () {
+        str = document.getElementById("pname2").innerHTML;
+        show.innerHTML = "选择： " + str + " " + scolor;
+        price = document.getElementById("price2").innerHTML;
+        document.getElementById("showprice").innerHTML = price;
+        document.getElementById("tprice").innerHTML = "总计：" + price;
+    }
+
+    function getColor1() {
+        scolor = document.getElementsByName("pcolor")[0].innerHTML;
+        show.innerHTML = "选择： " + str + " " + scolor;
+    }
+
+    function getColor2() {
+        scolor = document.getElementsByName("pcolor")[1].innerHTML;
+        show.innerHTML = "选择： " + str + " " + scolor;
+    }
+
+    function subForm() {
+        if (str == "" || scolor == "") {
+            alert("请选择版本和颜色");
+            return;
+        }
+        document.getElementsByName("info")[0].value = "${info} " + str + " " + scolor + " " + price + "<%=lists.get(0).getImage()%>";
+        document.getElementById("fid").submit();
+    }
+</script>
+</html>
